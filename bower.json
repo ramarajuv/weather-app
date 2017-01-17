@@ -27,6 +27,7 @@
     "bootstrap": "3.0.3",
     "angular": "1.5.6",
     "angular-sanitize": "1.5.6",
-    "angular-resource": "1.5.6"
+    "angular-resource": "1.5.6",
+    "iso-3166-country-codes-angular": "1.2.1"
   }
 }
