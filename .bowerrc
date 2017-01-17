@@ -1,0 +1,6 @@
+{
+  "directory": "app/lib/",
+  "timeout": 300000,
+  "proxy": "",
+  "https-proxy": ""
+}

@@ -1,0 +1,36 @@
+<div class="weather panel panel-primary">
+    <div class="panel-heading">{{parseDate(useDayForecast.dt) | date:'fullDate'}}</div>
+    <div class="panel-body">
+        <div>
+            <p class="lead">
+                <img ng-src="{{getIconImageUrl(useDayForecast.weather[0].icon)}}" />
+                <ng-show ng-show="selectedUnit == 'metric'">{{useDayForecast.temp.day | number:1}}&#176;C {{useDayForecast.weather[0].main}}</ng-show>
+                <ng-show ng-show="selectedUnit == 'imperial'">{{useDayForecast.temp.day | number:1}}&#176;F {{useDayForecast.weather[0].main}}</ng-show>
+            </p>
+            <p ng-show="selectedUnit == 'metric'">
+                {{useDayForecast.weather[0].description}}&nbsp;&#126;&nbsp;
+                High: {{useDayForecast.temp.max}}&#176;C&nbsp;&#126;&nbsp;
+                Low: {{useDayForecast.temp.min}}&#176;C
+            </p>
+            <p ng-show="selectedUnit == 'imperial'">
+                {{useDayForecast.weather[0].description}}&nbsp;&#126;&nbsp;
+                High: {{useDayForecast.temp.max}}&#176;F&nbsp;&#126;&nbsp;
+                Low: {{useDayForecast.temp.min}}&#176;F
+            </p>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <small ng-show="selectedUnit == 'metric'">
+            Day: {{useDayForecast.temp.day}}&#176;F&nbsp;&#126;&nbsp;
+            Night: {{useDayForecast.temp.night}}&#176;F&nbsp;&#126;&nbsp;
+            Pressure: {{useDayForecast.pressure}} hPa&nbsp;&#126;&nbsp;
+            Humidity: {{useDayForecast.humidity}}%
+        </small>
+        <small ng-show="selectedUnit == 'imperial'">
+            Day: {{useDayForecast.temp.day}}&#176;F&nbsp;&#126;&nbsp;
+            Night: {{useDayForecast.temp.night}}&#176;F&nbsp;&#126;&nbsp;
+            Pressure: {{useDayForecast.pressure}} hPa&nbsp;&#126;&nbsp;
+            Humidity: {{useDayForecast.humidity}}%
+        </small>
+    </div>
+</div>

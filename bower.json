@@ -1,0 +1,32 @@
+{
+  "name": "weather-app",
+  "description": "A browser based app using Angular and Node JS that shows weather forecast for a location/zipcode",
+  "main": "weather.js",
+  "authors": [
+    "Rama"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "forecast",
+    "angular",
+    "node",
+    "weather"
+  ],
+  "homepage": "https://github.com/ramarajuv/weather-app#readme",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/lib/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-mocks": "1.5.6",
+    "angular-route": "1.5.6",
+    "bootstrap": "3.0.3",
+    "angular": "1.5.6",
+    "angular-sanitize": "1.5.6",
+    "angular-resource": "1.5.6"
+  }
+}

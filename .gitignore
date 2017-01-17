@@ -1,0 +1,26 @@
+# OSX
+.DS_Store
+
+# git
+.git
+
+# data
+data/
+
+# Logs
+logs/
+*.log
+
+# Node/bower
+node_modules
+bower_components
+npm-debug.log
+
+# Build
+public/
+build/
+.env
+
+coverage/
+
+/app/lib
