@@ -19,7 +19,7 @@ module.exports = function(config) {
         files: [
             'app/lib/angular/angular.min.js',
             'app/lib/angular-*/angular-*.js',
-            'app/lib/iso-3166-country-codes-angular/iso-3166-country-codes-angular.js',
+            'app/lib/iso-3166-country-codes-angular/src/iso-3166-country-codes-angular.js',
             'app/css/bootstrap/css/bootstrap.css',
             'app/css/app.css',
             'app/js/**/*.js', // !!!! load .module files first and then everything else. Otherwise nothing will work
