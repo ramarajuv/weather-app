@@ -17,5 +17,5 @@ When entered a city and a choice of the temperature unit, the app should show cu
 
 ## Screenshot
 
-weather-app/app/img/screenshot.jpg
+![Weather App](app/img/screenshot.jpg "Weather App")
 
