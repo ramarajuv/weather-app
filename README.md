@@ -14,3 +14,8 @@ When entered a city and a choice of the temperature unit, the app should show cu
 
 - Please ensure you have karma-cli
 - From project root folder run `karma start config\karma.config.js`
+
+## Screenshot
+
+weather-app/app/img/screenshot.jpg
+
