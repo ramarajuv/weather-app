@@ -4,7 +4,7 @@ When entered a city and a choice of the temperature unit, the app should show cu
 
 ## Installation
 
-- To download the project `git clone https://github.com/rrv17/weather-app.git`
+- To download the project `git clone https://github.com/ramarajuv/weather-app.git`
 - Download dependencies using npm `npm install`
 - Download dependencies using npm `bower install`
 - Run the app using `node weather.js <port_number>`, eg `node weather.js 8200`
@@ -12,4 +12,5 @@ When entered a city and a choice of the temperature unit, the app should show cu
 
 ## Karma Tests
 
+- Please ensure you have karma-cli
 - From project root folder run `karma start config\karma.config.js`
