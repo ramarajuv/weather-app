@@ -1,9 +1,10 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular.module('weatherApp.services', ['ngResource'])
-    .factory('weatherFactory', function($q, $resource) {
+  angular.module('weatherApp.services', ['ngResource'])
+        .factory('weatherFactory', function ($q, $resource) {
 
-        var getForecastUsingCity = function(requestParam) {
+          var getForecastUsingCity = function (requestParam) {
 
             console.log('***** Inside Factory method getForecastUsingCity ****');
 
@@ -14,23 +15,24 @@ angular.module('weatherApp.services', ['ngResource'])
             var resource = $resource(apiBaseUrl);
 
             resource.get(
-                { 
-                    location: requestParam.location, 
-                    units: requestParam.selectedUnit, 
-                    apiKey: apiKey 
-                }, 
-                function(response) {
-                    deferred.resolve(response);
-                }, 
-                function(error){
-                    return deferred.reject(error.status);
-                }
-            );
+                    {
+                      location: requestParam.location,
+                      units: requestParam.selectedUnit,
+                      apiKey: apiKey
+                    },
+                    function (response) {
+                      deferred.resolve(response);
+                    },
+                    function (error) {
+                      return deferred.reject(error.status);
+                    }
+                );
 
             return deferred.promise;
-        };
+          };
 
-        return {
+          return {
             getForecastUsingCity: getForecastUsingCity
-        };
-    });
+          };
+        });
+}());

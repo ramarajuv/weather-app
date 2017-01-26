@@ -1,29 +1,36 @@
-// Dependencies
-var express = require('express');
-var bodyParser = require('body-parser');
+/**
+ * Node program to initialize the server and register the routers to serve REST calls.
+ * @author Rama Raju Vatsavai <rrv.atwork@gmail.com>
+ */
 
-// Express server
-var app = express();
+/** Get the Router instance for weather api */
+var weatherRouter = require('./scripts/routes/weatherRoute.js');
 
-// body-parser middleware to handle http json data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+var restify = require('restify');
 
-// Route for the API
-app.use('/api', require('./scripts/routes/route.js'));
+/** Create a server */
+var server = restify.createServer({
+  name: 'myapp',
+  version: '1.0.0',
+  url: 'localhost'
+});
+server.use(restify.acceptParser(server.acceptable));
+server.use(restify.queryParser());
+server.use(restify.bodyParser());
 
-// Routes for static resources
-app.use('/lib', express.static(__dirname + '/app/lib'));
-app.use('/js', express.static(__dirname + '/app/js'));
-app.use('/partials', express.static(__dirname + '/app/partials'));
+/** Add router to the server program */
+weatherRouter.applyRoutes(server);
 
-// Route for root context, picks /app/index.html as default home page
-app.use('/', express.static(__dirname + '/app'));
+/** Redirect root context to static index.html file */
+server.get(/.*/, restify.serveStatic({
+  directory: './app',
+  default: 'index.html'
+}));
 
-// Application runs on a user input port or defaulted to 8000
+/** Set the application PORT number to an input value or default to 8000 */
 var PORT = Number(process.argv[2]) || 8000;
 
-// Start server
-app.listen(PORT);
-console.log('Ready to get you weather on http://localhost:' + PORT);
-
+/** Let the server listen on the designated PORT */
+server.listen(PORT, function () {
+  console.log('%s listening at %s', server.name, server.url);
+});

@@ -8,7 +8,7 @@ angular.module('weatherApp.directives', [])
   // Create directive that handles formatting, resource fetching and
   // output of weather data for a specific date
   //
-  .directive('weatherPanel',[function factory() {
+  .directive('weatherPanel', [function factory() {
     return {
       restrict: 'EA',
 
@@ -30,5 +30,5 @@ angular.module('weatherApp.directives', [])
           return new Date(time * 1000);
         };
       }
-    }
+    };
   }]);
