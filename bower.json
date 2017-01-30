@@ -28,6 +28,11 @@
     "angular": "1.5.6",
     "angular-sanitize": "1.5.6",
     "angular-resource": "1.5.6",
-    "iso-3166-country-codes-angular": "1.2.1"
+    "iso-3166-country-codes-angular": "1.2.1",
+    "angular-material": "^1.1.1",
+    "ngstorage": "^0.3.11"
+  },
+  "resolutions": {
+    "angular": "1.6.1"
   }
 }

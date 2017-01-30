@@ -26,6 +26,8 @@
   "homepage": "https://github.com/ramarajuv/weather-app#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "jsdoc": "^3.4.3",
+    "jsonwebtoken": "^7.2.1",
     "request": "^2.79.0",
     "restify": "^4.3.0",
     "restify-router": "^0.4.0"

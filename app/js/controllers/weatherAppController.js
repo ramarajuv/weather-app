@@ -2,11 +2,11 @@
 
 /* Controllers */
 
-angular.module('weatherApp.controllers', [])
+angular.module('weatherApp.controllers', ['ngMaterial'])
 
 // Controller for "Weather map" api data search
-.controller('WeatherAppCtrl', ['$scope', 'weatherFactory', 'ISO3166',
-  function($scope, weatherFactory, ISO3166) {
+.controller('WeatherAppCtrl', ['$scope', '$location', '$localStorage', 'weatherFactory', 'ISO3166',
+  function($scope, $location, $localStorage, weatherFactory, ISO3166) {
 
     $scope.message = '';
     $scope.dataPresent = false;
@@ -39,6 +39,7 @@ angular.module('weatherApp.controllers', [])
       if ($scope.location !== '') requestParams.location = $scope.location;
       else if ($scope.zipcode !== '') requestParams.location = $scope.zipcode;
       requestParams.selectedUnit = $scope.selectedUnit;
+      requestParams.token = $localStorage.token;
 
       console.log('**** Before calling Factory method ****');
       weatherFactory.getForecastUsingCity(requestParams)
@@ -48,10 +49,16 @@ angular.module('weatherApp.controllers', [])
                       $scope.forecast = data;
                       $scope.dataPresent = true;
                     },
-                    function() {
+                    function(error) {
                       console.log('Failed to retreive forecast');
-                      $scope.dataPresent = false;
-                      $scope.message = 'Could not retreive forecast';
+
+                      if (error.status === 401) {
+                        $location.path('/login');
+                      }
+                      else {
+                        $scope.dataPresent = false;
+                        $scope.message = 'Could not retreive forecast';
+                      }
                     }
                 );
     };
