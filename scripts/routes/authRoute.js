@@ -22,7 +22,7 @@ router.get('/auth/users', handleGetUsers);
 /** On a POST request for /auth/login, validate the user credentials and generate a token */
 router.post('/auth/login', handleLogin);
 
-/** 
+/**
 * Handler function for the GET request
 * @function handleGetUsers
 * @param {Object} req the http request
@@ -77,4 +77,4 @@ function handleLogin(req, res, next){
 }
 
 /** Export the Router instance */
-module.exports = router;  
+module.exports = router;
