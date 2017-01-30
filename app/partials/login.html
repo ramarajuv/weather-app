@@ -1,0 +1,39 @@
+<div align="right"><a href="/forecast">Forecast</a></div>
+<div id="loginContainer" class="inputDemo" ng-cloak>
+	<md-content layout-padding>
+		<form name="loginDataForm">
+			<md-input-container class="md-block">
+				<label>Username</label>
+				<input required name="username" ng-model="loginData.username" minlength="4" maxlength="100"
+				/>
+				<div ng-messages="loginDataForm.username.$error" role="alert">
+					<div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+						Your username must be between 4 and 100 characters long.
+					</div>
+				</div>
+			</md-input-container>
+			<md-input-container class="md-block">
+				<label>Password</label>
+				<input required name="password" ng-model="loginData.password" minlength="4" maxlength="100"
+				/>
+				<div ng-messages="loginDataForm.password.$error" role="alert">
+					<div ng-message-exp="['required', 'minlength', 'maxlength']">
+						Your password must be between 4 and 100 characters long.
+					</div>
+				</div>
+			</md-input-container>
+			<md-input-container class="md-block">
+                <div>
+                    <form class="form-inline">
+                        <div class="form-group">
+<!--                            <button ng-click="submitLogin()" type="submit" class="btn btn-primary">Submit</button> -->
+                            <md-button class="md-raised md-primary" ng-click="submitLogin()">Login</md-button>
+            <!--                <button ng-click="getWeatherByLocation(location)" type="submit" class="btn btn-primary">Get Weather</button> -->
+                            <div ng-show="message != ''">{{message}}</div>
+                        </div>
+                    </form>
+                </div>
+			</md-input-container>
+		</form>
+	</md-content>
+</div>

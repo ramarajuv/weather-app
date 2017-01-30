@@ -2,29 +2,32 @@
 <html lang="en" ng-app="weatherApp">
     <head>
         <title>Weather App</title>
-        <link rel="stylesheet" href="css/bootstrap/css/bootstrap.css"/>
-        <link rel="stylesheet" href="css/app.css"/>
+        <link rel="stylesheet" href="./css/bootstrap/css/bootstrap.css"/>
+        <link rel="stylesheet" href="./css/app.css"/>
+        <link rel="stylesheet" href="./lib/angular-material/angular-material.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
     <body>
-        <nav class="navbar navbar-fixed-top navbar-inverse">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">Weather App</a>
-            </div>
-        </nav>
         <div class="container">
             <div ng-view></div>
         </div>
 
         <script src="lib/angular/angular.min.js"></script>
+        <script src="./lib/angular-animate/angular-animate.min.js"></script>
+        <script src="./lib/angular-aria/angular-aria.min.js"></script>
+        <script src="./lib/angular-messages/angular-messages.min.js"></script>
+        <script src="./lib/angular-material/angular-material.min.js"></script>
         <script src="lib/angular-route/angular-route.min.js"></script>
         <script src="lib/angular-resource/angular-resource.min.js"></script>
         <script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
         <script src="lib/angular-mocks/angular-mocks.js"></script>
+        <script src="lib/ngStorage/ngStorage.min.js"></script>
         <script src="lib/iso-3166-country-codes-angular/src/iso-3166-country-codes-angular.js"></script>
         <script src="js/weatherApp.js"></script>
         <script src="js/services/weatherAppFilter.js"></script>
         <script src="js/services/weatherAppService.js"></script>
         <script src="js/controllers/weatherAppController.js"></script>
+        <script src="js/controllers/loginController.js"></script>
         <script src="js/directives/weatherApp.forecast.directive.js"></script>
     </body>
 </html>
