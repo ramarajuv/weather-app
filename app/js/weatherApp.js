@@ -1,3 +1,7 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-console */
+/* eslint-disable no-undef */
+
 'use strict';
 
 // Declare app level module which depends on filters, and services

@@ -2,9 +2,11 @@
   "name": "weather-app",
   "version": "0.0.1",
   "description": "A browser based app using Angular and Node JS that shows weather forecast for a location/zipcode",
-  "main": "weather.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "dev": "export NODE_ENV=development && nodemon -w ./scripts -w ./server.js | bunyan -o short",
+    "test": "karma start config/karma.config.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +33,7 @@
     "restify-router": "^0.4.0"
   },
   "devDependencies": {
+    "bunyan": "^1.8.5",
     "eslint": "^3.12.0",
     "eslint-config-airbnb": "^13.0.0",
     "jasmine-core": "^2.5.2",
@@ -39,6 +42,7 @@
     "karma-chrome-launcher": "^2.0.0",
     "karma-jasmine": "^1.1.0",
     "karma-junit-reporter": "^1.2.0",
+    "nodemon": "^1.11.0",
     "watchify": "^3.8.0"
   }
 }

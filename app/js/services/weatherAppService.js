@@ -1,8 +1,12 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-console */
+/* eslint-disable no-undef */
+
 (function () {
   'use strict';
 
   angular.module('weatherApp.services', ['ngResource'])
-    .factory('weatherFactory', function ($q, $resource, $http) {
+    .factory('weatherFactory', function ($q, $resource) {
 
       var getForecastUsingCity = function (requestParam) {
 
@@ -37,6 +41,7 @@
             deferred.resolve(response);
           },
           function (error) {
+            console.log('weatherAppService: error = ', error);
             return deferred.reject(error);
           }
         );
@@ -64,7 +69,7 @@
             if (!response.result) {
               return deferred.reject(response.status);
             }
-            else deferred.resolve(response);
+            deferred.resolve(response);
           },
           function (error) {
             return deferred.reject(error);
