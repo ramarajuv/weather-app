@@ -1,3 +1,7 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-console */
+/* eslint-disable no-undef */
+
 'use strict';
 
 /* Directives */
@@ -20,7 +24,7 @@ angular.module('weatherApp.directives', [])
 
       templateUrl: 'partials/_weather-panel.html',
 
-      link: function(scope, element, attrs) {
+      link: function(scope) {
         // Get icon image url
         scope.getIconImageUrl = function(iconName) {
           return (iconName ? 'http://openweathermap.org/img/w/' + iconName + '.png' : '');
