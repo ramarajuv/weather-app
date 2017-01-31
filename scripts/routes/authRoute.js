@@ -1,20 +1,18 @@
-
+/* eslint-disable linebreak-style */
 /**
  * Authentication Router module.
  * @author Rama Raju Vatsavai <rrv.atwork@gmail.com>
  * @module routes/authRoute
  */
 
-var http = require('http');
-var request = require('request');
-var jwt = require("jsonwebtoken");
-var config = require('./authConfig');''
+var jwt = require('jsonwebtoken');
+var config = require('./authConfig');
 
 /** The Router class from restify-router module */
-const Router = require('restify-router').Router;
+var Router = require('restify-router').Router;
 
 /** An instance of Router class */
-const router = new Router();
+var router = new Router();
 
 /** On a GET request for /auth/users, return the list of users */
 router.get('/auth/users', handleGetUsers);
@@ -30,8 +28,8 @@ router.post('/auth/login', handleLogin);
 * @param {Object} next the chain handler for routes
 */
 function handleGetUsers(req, res, next) {
-    res.send(config.users);
-    next();
+  res.send(config.users);
+  next();
 }
 
 /**
@@ -41,39 +39,38 @@ function handleGetUsers(req, res, next) {
  * @param {Object} res the http response
  * @param {Object} next the chain handler for routes
  */
-function handleLogin(req, res, next){
-    if (req.body != null && req.body.username != null){
+function handleLogin(req, res, next) {
+  if (req.body != null && req.body.username != null) {
 
-        var username = req.body.username;
-        var password = req.body.password;
-        var userObj = config.users[username];
-        console.log('userObj ', userObj);
+    var username = req.body.username;
+    var password = req.body.password;
+    var userObj = config.users[username];
+    console.log('userObj ', userObj);
 
-        if (userObj != null && password === userObj.password){
-            var profile = {
-                username: username,
-                password: password
-            }
+    if (userObj != null && password === userObj.password) {
+      var profile = {
+        username: username,
+        password: password
+      };
 
             // If username and passowrd match, then proceed with token generation and respond
-            var token = jwt.sign(profile, config.secret, {expiresIn: 60*60});
-            res.send({
-                result: true,
-                message: 'Authentication Successful',
-                status: 200,
-                token: token
-            });
-        }
-        else {
-            res.send({
-                result: false,
-                message: 'Authentication Failed',
-                status: 401,
-                token: null
-            })
-        }
+      var token = jwt.sign(profile, config.secret, { expiresIn: 60 * 60 });
+      res.send({
+        result: true,
+        message: 'Authentication Successful',
+        status: 200,
+        token: token
+      });
+    } else {
+      res.send({
+        result: false,
+        message: 'Authentication Failed',
+        status: 401,
+        token: null
+      });
     }
-    next();
+  }
+  next();
 }
 
 /** Export the Router instance */

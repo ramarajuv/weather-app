@@ -1,3 +1,7 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-console */
+/* eslint-disable no-undef */
+
 'use strict';
 
 /* Controllers */
@@ -5,8 +9,8 @@
 angular.module('weatherApp.controllers', ['ngMaterial'])
 
 // Controller for "Weather map" api data search
-.controller('WeatherAppCtrl', ['$scope', '$location', '$localStorage', 'weatherFactory', 'ISO3166',
-  function($scope, $location, $localStorage, weatherFactory, ISO3166) {
+.controller('WeatherAppCtrl', ['$scope', '$location', '$localStorage', 'weatherFactory',
+  function($scope, $location, $localStorage, weatherFactory) {
 
     $scope.message = '';
     $scope.dataPresent = false;
@@ -30,8 +34,8 @@ angular.module('weatherApp.controllers', ['ngMaterial'])
 
       $scope.message = '';
 
-      if (($scope.location === '' || $scope.location == undefined) &&
-                ($scope.zipcode == '' || $scope.zipcode == undefined)) {
+      if (($scope.location === '' || $scope.location === undefined) &&
+                ($scope.zipcode === '' || $scope.zipcode === undefined)) {
         $scope.message = 'Please provide either City or Zipcode';
         return;
       }
@@ -54,8 +58,7 @@ angular.module('weatherApp.controllers', ['ngMaterial'])
 
                       if (error.status === 401) {
                         $location.path('/login');
-                      }
-                      else {
+                      } else {
                         $scope.dataPresent = false;
                         $scope.message = 'Could not retreive forecast';
                       }

@@ -1,10 +1,14 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-console */
+/* eslint-disable no-undef */
+
 'use strict';
 
 describe('weatherApp.controllers module', function() {
 
-  var scope,
-    WeatherAppController,
-    WeatherAppFactory;
+  var scope;
+  var WeatherAppController;
+  var WeatherAppFactory;
 
   beforeEach(function() {
     module('weatherApp');
@@ -47,19 +51,13 @@ describe('weatherApp.controllers module', function() {
         result: 'result'
       };
 
-      inject(function($q) {
-                // var deferred = $q.defer();
-                // factorySpy = spyOn(OpenWeatherFactory, 'getForecastUsingCity').and.returnValue(deferred.promise);
+      inject(function() {
         factorySpy = spyOn(WeatherAppFactory, 'getForecastUsingCity').and.returnValue({
           then: function (successFn) {
             successFn(forecastResult);
           }
         });
-
-                // deferred.resolve(forecastResult);
-                // scope.$root.$digest();
       });
-
     });
 
     it('check for controller variables initialized', function() {

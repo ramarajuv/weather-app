@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-console */
 
 /**
@@ -6,8 +7,7 @@
  * @module routes/weatherRoute
  */
 
-var restify = require('restify');
-var request = require('request');
+var Restify = require('restify');
 var jwt = require('jsonwebtoken');
 
 var config = require('./authConfig');
@@ -25,7 +25,9 @@ var jsFilename = 'weatherRouter: ';
 /** Verify the user first */
 router.use(verifyUser);
 
-/** Handler function to ensure user is authenticated */
+/**
+ * Handler function to ensure user is authenticated
+ */
 function verifyUser(req, res, next) {
   console.log(req.headers);
   var token = req.headers.authorization || req.headers['x-access-token'] || (req.body && req.body.token) || (req.query && req.query.token);
@@ -36,15 +38,14 @@ function verifyUser(req, res, next) {
       if (errVerifyToken) {
         console.log('errVerifyToken = ', errVerifyToken);
           // if authentication failed, user should not proceed forward
-        return res.send(new restify());
-      } else {
-          // if everything is good, proceed to actual route
-        req.decoded = decoded;
-        next();
+        return res.send(new Restify());
       }
+      // if everything is good, proceed to actual route
+      req.decoded = decoded;
+      next();
     });
   } else {
-    return next(new restify.UnauthorizedError());
+    return next(new Restify.UnauthorizedError());
   }
 
 }
@@ -63,28 +64,23 @@ function handleGetForecastDetailsWithCity(req, res, next) {
     apiKey: req.params.apiKey
   };
 
-  if (!req.params.location) return next(new restify.ConflictError('location required'));
-  if (!req.params.units) return next(new restify.ConflictError('units required'));
-  if (!req.params.apiKey) return next(new restify.ConflictError('apiKey required'));
+  if (!req.params.location) return next(new Restify.ConflictError('location required'));
+  if (!req.params.units) return next(new Restify.ConflictError('units required'));
+  if (!req.params.apiKey) return next(new Restify.ConflictError('apiKey required'));
 
   getWeather.getForecastDetailsWithCity(data, function(errGetForecast, forecast) {
     if (errGetForecast) {
       if (errGetForecast === 404) {
-        return next(new restify.NotFoundError());
+        return next(new Restify.NotFoundError());
       }
 
       console.log(jsFilename + 'errGetForecast ', errGetForecast);
-      return next(new restify.InternalServerError());
+      return next(new Restify.InternalServerError());
     }
 
     res.send(200, forecast);
     return next();
   });
-}
-
-/** Print errors to console */
-function printError(error) {
-  console.error(error.message);
 }
 
 /** Export the Router instance */
