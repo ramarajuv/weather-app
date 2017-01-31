@@ -1,4 +1,6 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-console */
+
 /**
  * Authentication Router module.
  * @author Rama Raju Vatsavai <rrv.atwork@gmail.com>

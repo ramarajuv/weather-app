@@ -1,3 +1,7 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-console */
+/* eslint-disable no-undef */
+
 'use strict';
 
 /* Controllers */
@@ -14,7 +18,7 @@ angular.module('weatherApp.controllers')
       password: ''
     };
 
-        // Get forecast data for location as given in $scope.location
+    // Get forecast data for location as given in $scope.location
     $scope.submitLogin = function() {
 
       $scope.message = '';

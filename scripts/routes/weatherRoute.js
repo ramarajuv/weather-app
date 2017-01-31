@@ -38,7 +38,7 @@ function verifyUser(req, res, next) {
       if (errVerifyToken) {
         console.log('errVerifyToken = ', errVerifyToken);
           // if authentication failed, user should not proceed forward
-        return res.send(new Restify());
+        return res.send(new Restify.ForbiddenError('Unable to verify token'));
       }
       // if everything is good, proceed to actual route
       req.decoded = decoded;

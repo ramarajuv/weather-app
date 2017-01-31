@@ -56,7 +56,7 @@ angular.module('weatherApp.controllers', ['ngMaterial'])
                     function(error) {
                       console.log('Failed to retreive forecast');
 
-                      if (error.status === 401) {
+                      if (error.status === 401 || error.status === 403) {
                         $location.path('/login');
                       } else {
                         $scope.dataPresent = false;
