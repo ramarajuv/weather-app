@@ -37,6 +37,7 @@
             deferred.resolve(response);
           },
           function (error) {
+            console.log('weatherAppService: error = ', error);
             return deferred.reject(error);
           }
         );
