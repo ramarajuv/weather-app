@@ -19,6 +19,11 @@ Inspiration for the app came from: https://github.com/atufkas/angular-openweathe
 - Please ensure you have karma-cli
 - From project root folder run `npm run test`
 
+## Swagger API/Tests
+
+- Please ensure swagger-cli is already installed. Can be installed using npm `npm install -g swagger`
+- From the project root folder run `swagger project start` and `swagger project edit`
+
 ## Screenshot
 
 ![Weather App](app/img/screenshot.jpg "Weather App")
