@@ -47,13 +47,7 @@ server.get(/.*/, restify.serveStatic({
   default: 'index.html'
 }));
 
-
-/*
-server.listen(PORT, function () {
-  console.log('%s listening at %s', server.name, server.url);
-});
-*/
-
+/** Run the server using swagger-restify middleware */
 SwaggerRestify.create(config, function(err, swaggerRestify) {
   if (err) { throw err; }
 
@@ -63,10 +57,8 @@ SwaggerRestify.create(config, function(err, swaggerRestify) {
   var PORT = Number(process.argv[2]) || 8000;
   server.listen(PORT);
 
-  console.log('-------- SwaggerRestify.create ----------');
-  console.log(swaggerRestify.runner.swagger.paths);
-  if (swaggerRestify.runner.swagger.paths['/auth/users']) {
-    console.log('try this:\ncurl http://127.0.0.1:' + PORT + '/auth/users');
+  if (swaggerRestify.runner.swagger.paths['/auth/login']) {
+    console.log('Server running on port ' + PORT);
   }
 });
 
