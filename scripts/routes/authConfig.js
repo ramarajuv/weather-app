@@ -1,3 +1,6 @@
+/* eslint-disable linebreak-style */
+/* eslint-disable no-console */
+
 module.exports = {
   secret: 'ramasweatherapp',
   users: {
