@@ -76,4 +76,8 @@ function handleLogin(req, res, next) {
 }
 
 /** Export the Router instance */
-module.exports = router;
+module.exports = {
+  route: router,
+  handleGetUsers: handleGetUsers,
+  handleLogin: handleLogin
+};

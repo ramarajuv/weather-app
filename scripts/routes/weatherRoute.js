@@ -84,4 +84,7 @@ function handleGetForecastDetailsWithCity(req, res, next) {
 }
 
 /** Export the Router instance */
-module.exports = router;
+module.exports = {
+  route: router,
+  handleGetForecastDetailsWithCity: handleGetForecastDetailsWithCity
+};

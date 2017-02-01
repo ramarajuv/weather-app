@@ -1,0 +1,121 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Weather App
+# during dev, should point to your local machine
+host: localhost:8000
+# basePath prefixes all resource paths 
+basePath: /
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /auth/users:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: authRoute
+    get:
+      description: Returns registered users on the app
+      # used as the method name of the controller
+      operationId: handleGetUsers
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/GetUserResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /auth/login:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: authRoute
+    post:
+      description: Returns login result
+      # used as the method name of the controller
+      operationId: handleLogin
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/LoginCredentials"
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/GetLoginResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+  # User response object for /auth/users end point
+  GetUserResponse:
+    required:
+      - secret
+    properties:
+      secret:
+        type: string
+        description: secret for token generation
+      users:
+        type: object
+        properties: 
+          rama:
+            type: object
+            properties: 
+              id:
+                type: number
+              password:
+                type: string
+          raju:
+            type: object
+            properties: 
+              id:
+                type: number
+              password:
+                type: string
+  # Response to login action i.e /auth/login end point
+  GetLoginResponse:
+    required:
+      - result
+    properties:
+      result:
+        type: boolean
+      message:
+        type: string
+      status:
+        type: number
+      token:
+        type: string
+  # User credentials for /auth/login end point
+  LoginCredentials:
+    required:
+      - username
+      - password
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+  # Error response in general
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string
