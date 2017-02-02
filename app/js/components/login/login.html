@@ -4,7 +4,7 @@
 		<form name="loginDataForm">
 			<md-input-container class="md-block">
 				<label>Username</label>
-				<input required name="username" ng-model="loginData.username" minlength="4" maxlength="100"
+				<input required name="username" ng-model="vm.loginData.username" minlength="4" maxlength="100"
 				/>
 				<div ng-messages="loginDataForm.username.$error" role="alert">
 					<div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
@@ -14,7 +14,7 @@
 			</md-input-container>
 			<md-input-container class="md-block">
 				<label>Password</label>
-				<input required name="password" ng-model="loginData.password" minlength="4" maxlength="100"
+				<input required name="password" ng-model="vm.loginData.password" minlength="4" maxlength="100"
 				/>
 				<div ng-messages="loginDataForm.password.$error" role="alert">
 					<div ng-message-exp="['required', 'minlength', 'maxlength']">
@@ -27,9 +27,9 @@
                     <form class="form-inline">
                         <div class="form-group">
 <!--                            <button ng-click="submitLogin()" type="submit" class="btn btn-primary">Submit</button> -->
-                            <md-button class="md-raised md-primary" ng-click="submitLogin()">Login</md-button>
+                            <md-button class="md-raised md-primary" ng-click="vm.submitLogin()">Login</md-button>
             <!--                <button ng-click="getWeatherByLocation(location)" type="submit" class="btn btn-primary">Get Weather</button> -->
-                            <div ng-show="message != ''">{{message}}</div>
+                            <div ng-show="message != ''">{{ vm.message }}</div>
                         </div>
                     </form>
                 </div>

@@ -10,6 +10,7 @@
 /** Import the middleware */
 var restify = require('restify');
 var SwaggerRestify = require('swagger-restify-mw');
+var fs = require('fs');
 
 /** Get the Router instance for weather api */
 var weatherRouter = require('./scripts/routes/weatherRoute.js').route;
@@ -40,8 +41,25 @@ server.use(function(req, res, next) {
 weatherRouter.applyRoutes(server);
 authRouter.applyRoutes(server);
 
+server.get({
+  name: 'catchallOne',
+  path: '/[^.]+$',
+}, function(req, res, next) {
+  fs.readFile('./app/index.html', 'utf8', function(err, file) {
+    if (err) {
+      log.error('error processing index.html, err = ', err);
+      res.send(500);
+      return next();
+    }
+
+    res.write(file);
+    res.end();
+    return next();
+  });
+});
+
 /** Redirect root context to static index.html file */
-server.get(/.*/, restify.serveStatic({
+server.get(/^\/?.*/, restify.serveStatic({
   directory: './app',
   default: 'index.html'
 }));
@@ -60,5 +78,8 @@ server.get(/.*/, restify.serveStatic({
 //     console.log('Server running on port ' + PORT);
 //   }
 // });
+
+var PORT = Number(process.argv[2]) || 8000;
+server.listen(PORT);
 
 module.exports = server;

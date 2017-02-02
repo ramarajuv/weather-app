@@ -8,6 +8,8 @@
   angular.module('weatherApp.services', ['ngResource'])
     .factory('weatherFactory', function ($q, $resource) {
 
+      console.log('load weather');
+
       var getForecastUsingCity = function (requestParam) {
 
         console.log('***** Inside Factory method getForecastUsingCity ****');

@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "dev": "export NODE_ENV=development && nodemon -w ./scripts -w ./server.js | bunyan -o short",
-    "test": "karma start config/karma.config.js"
+    "test-web": "karma start config/karma.config.js",
+    "test": "node_modules/.bin/mocha test/mocha"
   },
   "repository": {
     "type": "git",
