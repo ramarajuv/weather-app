@@ -26,10 +26,6 @@ Inspiration for the app came from: https://github.com/atufkas/angular-openweathe
 
 ## Mocha API/Tests
 
-- Please ensure `mocha`, `should` and `supertest` modules are already installed. Can be installed using the following commands:
-  - `npm install mocha --save-dev`
-  - `npm install should --save-dev`
-  - `npm install supertest --save-dev`
 - From the project root folder run `node_modules/.bin/mocha test/mocha` i.e execute mocha script on the location of the mocha test files.
 
 ## Screenshot

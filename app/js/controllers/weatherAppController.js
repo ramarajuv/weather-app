@@ -9,8 +9,8 @@
 angular.module('weatherApp.controllers', ['ngMaterial'])
 
 // Controller for "Weather map" api data search
-.controller('WeatherAppCtrl', ['$scope', '$location', '$localStorage', 'weatherFactory',
-  function($scope, $location, $localStorage, weatherFactory) {
+.controller('WeatherAppCtrl', ['$scope', '$location', '$localStorage', 'authService', 'weatherFactory',
+  function($scope, $location, $localStorage, authService, weatherFactory) {
 
     $scope.message = '';
     $scope.dataPresent = false;
@@ -23,6 +23,10 @@ angular.module('weatherApp.controllers', ['ngMaterial'])
       Celcius: 'metric'
     };
     $scope.selectedUnit = $scope.unitChoice.Farenheit;
+
+    $scope.submitLogout = function() {
+      authService.logout();
+    };
 
         // url to show images from openweather api
     $scope.iconBaseUrl = 'http://openWeatherFactory.org/img/w/';
