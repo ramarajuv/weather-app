@@ -48,18 +48,18 @@ server.get(/.*/, restify.serveStatic({
 }));
 
 /** Run the server using swagger-restify middleware */
-SwaggerRestify.create(config, function(err, swaggerRestify) {
-  if (err) { throw err; }
-
-  swaggerRestify.register(server);
-
-/** Set the application PORT number to an input value or default to 8000 */
-  var PORT = Number(process.argv[2]) || 8000;
-  server.listen(PORT);
-
-  if (swaggerRestify.runner.swagger.paths['/auth/login']) {
-    console.log('Server running on port ' + PORT);
-  }
-});
+// SwaggerRestify.create(config, function(err, swaggerRestify) {
+//   if (err) { throw err; }
+//
+//   swaggerRestify.register(server);
+//
+// /** Set the application PORT number to an input value or default to 8000 */
+//   var PORT = Number(process.argv[2]) || 8000;
+//   server.listen(PORT);
+//
+//   if (swaggerRestify.runner.swagger.paths['/auth/login']) {
+//     console.log('Server running on port ' + PORT);
+//   }
+// });
 
 module.exports = server;
