@@ -16,17 +16,17 @@ Inspiration for the app came from: https://github.com/atufkas/angular-openweathe
 
 ## Karma Tests
 
-- Please ensure you have karma-cli
+- Please ensure you have `karma-cli`
 - From project root folder run `npm run test`
 
 ## Swagger API/Tests
 
-- Please ensure swagger-cli is already installed. Can be installed using npm `npm install -g swagger`
+- Please ensure `swagger-cli` is already installed. Can be installed using npm `npm install -g swagger`
 - From the project root folder run `swagger project start` and `swagger project edit`
 
 ## Mocha API/Tests
 
-- Please ensure mocha, should and supertest modules are already installed. Can be installed using the following commands:
+- Please ensure `mocha`, `should` and `supertest` modules are already installed. Can be installed using the following commands:
   - `npm install mocha --save-dev`
   - `npm install should --save-dev`
   - `npm install supertest --save-dev`
